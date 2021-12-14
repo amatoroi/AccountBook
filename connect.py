@@ -1,7 +1,10 @@
+import accountbook as acb
 import pymysql 
 import pandas as pd
 
-conn = pymysql.connect(host='localhost', port=4306, user='amatoroi', password='1234', charset='utf8', db='stockdata') 
+kargv = acb.ReadSetting()
+conn = pymysql.connect(**kargv, charset='utf8', db='stockdata')
+
 cursor = conn.cursor() 
 
 sql = '''
