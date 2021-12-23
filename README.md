@@ -37,10 +37,18 @@ Task List
  |
  | 
  |-- codelist ----- 
-                  |-- lcls_cd (대상 컬럼명)
-                  |-- comcd (코드: 대상 컬럼의 value)
-                  |-- comcd_nm (코드 이름, 대체워딩)
-                  |-- comcd_detl (코드상세 설명)
+ |                |-- lcls_cd (대상 컬럼명)
+ |                |-- comcd (코드: 대상 컬럼의 value)
+ |                |-- comcd_nm (코드 이름, 대체워딩)
+ |                |-- comcd_detl (코드상세 설명)
+ |
+ |
+ |-- savings ------ 
+                  |-- date (예: 20210101)
+                  |-- agent (코드 예: 한국투자증권 = 001)
+                  |-- tgt_agent (코드 예: 한국투자증권 = 001)
+                  |-- trnsc_reason (코드: 이체 사유, )
+                  |-- trnsc_amnt (금액)
 ```
 
 ## 1.4. 파일구성
