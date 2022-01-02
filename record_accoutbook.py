@@ -110,8 +110,8 @@ sql = f'''
 
 print(sql)
 
-#cursor.execute(sql) 
-#conn.commit() 
+cursor.execute(sql) 
+conn.commit() 
 
 
-#conn.close() 
+conn.close() 

@@ -10,6 +10,7 @@ cursor = conn.cursor()
 #sql = "SELECT COLUMN_NAME, COLUMN_TYPE, COLUMN_KEY, IS_NULLABLE, EXTRA FROM information_schema.COLUMNS WHERE TABLE_NAME='accountbook'"
 #sql = "SELECT COLUMN_NAME, COLUMN_TYPE, COLUMN_KEY, IS_NULLABLE, EXTRA FROM information_schema.COLUMNS WHERE TABLE_NAME='codelist'"
 #sql = "SELECT COLUMN_NAME, COLUMN_TYPE, COLUMN_KEY, IS_NULLABLE, EXTRA FROM information_schema.COLUMNS WHERE TABLE_NAME='savings'"
+#sql = "SELECT * from accountbook"
 sql = "SELECT * from codelist"
 
 cursor.execute(sql) 
