@@ -30,4 +30,4 @@ def update_graph(n_clicks, stddate):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=3001, host='0.0.0.0')
+    app.run_server(debug=True, port=4000, host='0.0.0.0')

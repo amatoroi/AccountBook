@@ -1,3 +1,3 @@
-import MakePlotlyFig as mpf
+import DataPreAnal as dpa
 
-mpf.GetChart()
+dpa.GetData()
