@@ -240,8 +240,8 @@ def GetChart(stddt = '20211210'):
                   row=2, col=1)
 
     fig.add_trace(go.Pie(
-                          labels = plotdata[plotdata['Date'] == pd.to_datetime('20220101',format='%Y%m%d')].groupby(by='Category')['Amount'].sum().index,
-                          values = plotdata[plotdata['Date'] == pd.to_datetime('20220101',format='%Y%m%d')].groupby(by='Category')['Amount'].sum(),
+                          labels = plotdata[plotdata['Date'] == plotdata['Date'].max()].groupby(by='Category')['Amount'].sum().index,
+                          values = plotdata[plotdata['Date'] == plotdata['Date'].max()].groupby(by='Category')['Amount'].sum(),
                           showlegend=False,
                           hole=0.3,
                           textinfo='label+percent',

@@ -24,12 +24,12 @@ def genTable(dataframe, max_rows=10):
            ])
 
 def readCodes(cons=None):
+    if cons is None:
+        cons = 'agent'
+
     kargv = ReadSetting()
     conn = pymysql.connect(**kargv, charset='utf8', db='stockdata')
     cursor = conn.cursor()
-
-    if cons is None:
-        cons = 'agent'
 
     sql = f'''
             select comcd_nm as label, comcd as value from codelist where lcls_cd = '{cons}'
@@ -46,8 +46,6 @@ def rcrdAccntBk(*vals):
     kargv = ReadSetting()
     conn = pymysql.connect(**kargv, charset='utf8', db='stockdata')
     cursor = conn.cursor()
-    for val in vals:
-        print(val)
 
     rel_seq    = val[0]
     date       = val[1]
@@ -58,21 +56,20 @@ def rcrdAccntBk(*vals):
     trnsc_amnt      = val[6]
 
     sql = f'''
-            INSERT INTO accountbook (rel_seq, date, agent, trnsc_type, trnsc_type_sub, trnsc_type_detl, trnsc_amnt)
-            values ({rel_seq}, '{date}', '{agent}', '{trnsc_type}', '{trnsc_type_sub}','{trnsc_type_detl}', {trnsc_amnt})
+            INSERT INTO accountbook (rel_seq, date, agent, 
+                                     trnsc_type, trnsc_type_sub, 
+                                     trnsc_type_detl, trnsc_amnt)
+            values ({rel_seq}, '{date}', '{agent}', 
+                    '{trnsc_type}', '{trnsc_type_sub}','{trnsc_type_detl}', {trnsc_amnt})
            '''
-    print(sql)
     cursor.execute(sql)
     conn.commit()
     conn.close()
 
 def readData():
-    #kargv = acb.ReadSetting()
     kargv = ReadSetting()
     conn = pymysql.connect(**kargv, charset='utf8', db='stockdata')
     cursor = conn.cursor() 
-#                ta.seq as 순번,
- #               ta.date as 날짜,
 
     sql = '''
             select 
@@ -115,7 +112,6 @@ def readData():
                 ) ta
             left join (select * from accountbook where rel_seq is not null) tb on ta.seq = tb.rel_seq
           '''
-#    sql = 'select * from accountbook'
     cursor.execute(sql)
     df = pd.DataFrame(cursor.fetchall())
     df.columns = list(map(lambda x: x[0], cursor.description))
@@ -125,4 +121,4 @@ def readData():
 
     conn.close() 
 
-    return df.tail()
+    return df.tail(10)
